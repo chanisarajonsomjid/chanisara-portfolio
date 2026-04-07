@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chanisara Jonsomjid — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">Chanisara Jonsomjid</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#home" class="mob-link">Home</a></li>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#education" class="mob-link">Education</a></li>
+      <li><a href="#experience" class="mob-link">Experience</a></li>
+      <li><a href="#projects" class="mob-link">Projects</a></li>
+      <li><a href="#achievements" class="mob-link">Awards</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg-text">PORTFOLIO</div>
+    <div class="hero-inner">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <img src="/image/chanisara.png" alt="Chanisara Jonsomjid" class="hero-photo" id="heroPhoto" />
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="30" r="16" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+       
+      </div>
+      <div class="hero-text">
+        <p class="hero-hello">Hello, I'm</p>
+        <h1 class="hero-name">Chanisara<br/><em>Jonsomjid</em></h1>
+        <p class="hero-sub">Portfolio</p>
+        <!-- <div class="hero-tags">
+          <span>Business Analysis</span>
+          <span>Digital Marketing</span>
+          <span>Data Analytics</span>
+        </div> -->
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="section-label">01 — About</div>
+    <div class="about-inner">
+      <h2 class="section-heading">About Me</h2>
+      <div class="about-body">
+        <div class="about-text">
+          <p>I am a 4th-year ICT student specialising in <strong>Management Information Systems (MIS)</strong> with a strong interest in business analysis and digital transformation. I enjoy understanding how businesses operate and identifying opportunities to improve processes using technology. I am a responsible team player with good communication skills and a willingness to continuously learn and adapt.</p>
+          <p>I am motivated to start my career in roles where I can contribute to improving business efficiency and supporting organisational growth. My goal is to leverage my technical knowledge and analytical skills to drive meaningful change and help organizations achieve their strategic objectives in an increasingly digital world.</p>
+        </div>
+    </div> 
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section education-section">
+    <div class="section-label">02 — Education</div>
+    <h2 class="section-heading">Education</h2>
+    <div class="edu-timeline">
+
+      <div class="edu-card reveal">
+        <div class="edu-logo-wrap">
+          <img src="/image/saint.jpg" alt="Saint Joseph Rayong School Logo">
+        </div>
+        <div class="edu-info">
+          <div class="edu-year">2016 – 2022</div>
+          <h3 class="edu-school">Saint Joseph Rayong School</h3>
+          <p class="edu-detail">Secondary Education</p>
+          <div class="edu-badge">GPAX 3.82 / 4.00 &nbsp;·&nbsp; First Class Honors · Golden Diploma</div>
+        </div>
+      </div>
+
+      <div class="edu-connector"></div>
+
+      <div class="edu-card reveal">
+        <div class="edu-logo-wrap">
+          <img src="/image/ict.png" alt="ICT Logo">
+        </div>
+        <div class="edu-info">
+          <div class="edu-year">2022 – 2026 (Expected)</div>
+          <h3 class="edu-school">Mahidol University</h3>
+          <p class="edu-detail">Bachelor of Science — Information and Communication Technology<br/><em>International Program · Major: Management Information Systems (ITMS)</em></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section experience-section">
+    <div class="section-label">03 — Experience</div>
+    <h2 class="section-heading">Work Experience</h2>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Jun – Aug 2025</span>
+          <span class="exp-type">Internship</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Account Executive</h3>
+          <p class="exp-company">Made Your Day Co., Ltd. — Bangkok</p>
+          <ul class="exp-bullets">
+            <li>Managed communication with 35+ SME clients/day, translating business needs into actionable marketing and campaign strategies.</li>
+            <li>Coordinated between clients and internal teams to ensure alignment of deliverables and business objectives.</li>
+            <li>Structured client requirements into clear briefs, improving workflow clarity and execution efficiency.</li>
+            <li>Tracked campaign performance across multiple client campaigns to support performance optimization.</li>
+            <li>Built and organized a prospect database to support business development and outreach strategy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Nov 2025 – Present</span>
+          <span class="exp-type">Part-Time</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Private Tutor — Mathematics, English, Science</h3>
+          <p class="exp-company">Baan Khun Kru Lek — Bangkok</p>
+          <ul class="exp-bullets">
+            <li>Delivered focused one-on-one sessions and adapted explanations that improved student comprehension.</li>
+            <li>Simplified complex concepts to improve student understanding and engagement.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section projects-section">
+    <div class="section-label">04 — University Projects</div>
+    <h2 class="section-heading">University Projects</h2>
+
+    <div class="proj-grid">
+
+      
+      <a class="proj-card proj-card--linked reveal" href="https://github.com/chanisarajonsomjid/Business-Process-Analysis-Mana-Outlet-" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <span class="proj-tag">Business Analyst</span>
+          <span class="proj-date">Jan – Apr 2025</span>
+        </div>
+        <div class="proj-thumbnail">
+          <img src="/image/mana.png" alt="Business Process Analysis" />
+          <div class="proj-thumbnail-overlay">
+            <span>View on GitHub &#x2197;</span>
+          </div>
+        </div>
+        <h3 class="proj-title">Mana Outlet — Business Process Analysis</h3>
+        <p class="proj-sub">End-to-End Process Improvement</p>
+        <ul class="proj-bullets">
+          <li>Analysed end-to-end customer journey across online and offline channels.</li>
+          <li>Identified operational bottlenecks in inventory and order fulfilment.</li>
+          <li>Modelled business processes and proposed improvements to enhance efficiency.</li>
+          <li>Presented recommendations to stakeholders.</li>
+        </ul>
+        <div class="proj-tech">
+          <span>Process Modelling</span><span>Stakeholder Mgmt</span>
+        </div>
+      </a>
+
+      <a class="proj-card proj-card--linked reveal" href="https://github.com/chanisarajonsomjid/Model-Based-Decision-Supporting-Tools-Metropolia-Smart-Public-Transportation-Analytics-Dashboard-" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <span class="proj-tag">Data Analytics</span>
+          <span class="proj-date">Oct 2025</span>
+        </div>
+        <div class="proj-thumbnail">
+          <img src="/image/dss-project.png" alt="Decision Support System" />
+          <div class="proj-thumbnail-overlay">
+            <span>View on GitHub &#x2197;</span>
+          </div>
+        </div>
+        <h3 class="proj-title proj-title--spaced">Decision Support System — Transportation Analytics</h3>
+        <p class="proj-sub">End-to-End DSS with Interactive Dashboards</p>
+        <ul class="proj-bullets">
+          <li>Performed ETL processes including data cleaning and transformation.</li>
+          <li>Built interactive dashboards to track operational KPIs.</li>
+          <li>Identified inefficiencies such as overcrowded and underutilised routes.</li>
+          <li>Provided data-driven recommendations to improve operational performance.</li>
+        </ul>
+        <div class="proj-tech">
+          <span>Excel</span><span>Power Query</span>
+        </div>
+      </a>
+
+      <a class="proj-card proj-card--linked reveal" href="https://github.com/chanisarajonsomjid/Peregrine" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <span class="proj-tag">Web Development</span>
+          <span class="proj-date">Nov 2023</span>
+        </div>
+        <div class="proj-thumbnail">
+          <img src="/image/peregrine.jpeg" alt="Peregrine Tutoring Platform" />
+          <div class="proj-thumbnail-overlay">
+            <span>View on GitHub &#x2197;</span>
+          </div>
+        </div>
+        <h3 class="proj-title proj-title--spaced">Peregrine — Tutoring Platform</h3>
+        <p class="proj-sub">Dynamic Tutoring Website connecting Tutors & Students</p>
+        <ul class="proj-bullets">
+          <li>Developed a full-stack tutoring platform with tutor search, profile pages, and admin management system.</li>
+          <li>Built frontend with HTML, CSS, and JavaScript; backend with Node.js (Express) and MySQL database.</li>
+          <li>Implemented authentication, CRUD operations for tutor/admin accounts, and multi-criteria search (name, subject, location).</li>
+          <li>Designed and tested RESTful web services using Postman for all API endpoints.</li>
+        </ul>
+        <div class="proj-tech">
+          <span>HTML/CSS/JS</span><span>Node.js</span><span>Express</span><span>MySQL</span>
+        </div>
+      </a>
+
+      <a class="proj-card proj-card--linked reveal" href="https://github.com/chanisarajonsomjid/DormiSpace-Application" target="_blank" rel="noopener">
+        <div class="proj-header">
+          <span class="proj-tag">Frontend &amp; Database</span>
+          <span class="proj-date">Nov 2025 – Present</span>
+        </div>
+        <div class="proj-thumbnail">
+          <img src="/image/dormispace.png" alt="DormiSpace App" />
+          <div class="proj-thumbnail-overlay">
+            <span>View on GitHub &#x2197;</span>
+          </div>
+        </div>
+        <h3 class="proj-title proj-title--spaced">DormiSpace</h3>
+        <p class="proj-sub">Smart Dormitory Management System with OCR-Based Utility Tracking &amp; Integrated Payment Gateway</p>
+        <ul class="proj-bullets">
+          <li>Mobile-based system for landlords and tenants using Flutter and Spring Boot.</li>
+          <li>Designed database structure for tenant, payment, and maintenance request management.</li>
+          <li>Implemented OCR to automate utility bill recording and reduce manual errors.</li>
+          <li>Designed workflow for tenant onboarding, payment tracking, and maintenance.</li>
+        </ul>
+        <div class="proj-tech">
+          <span>Flutter</span><span>Spring Boot</span><span>PostgreSQL</span><span>OCR</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section achievements-section">
+    <div class="section-label">05 — Leadership & Awards</div>
+    <h2 class="section-heading">Leadership &amp; Achievements</h2>
+
+    <div class="ach-card reveal">
+      <div class="ach-left">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-date">Mar – Jun 2024</div>
+      </div>
+      <div class="ach-right">
+        <h3 class="ach-title">BKK Stories Short Video Competition — BKK EXPO 2024</h3>
+        <div class="ach-badges">
+          <span class="badge-gold">Top 20 Finalist</span>
+          <span class="badge-pop">Popular Vote Winner</span>
+        </div>
+        <p class="ach-desc">Selected as Top 20 finalist out of 120 teams in a citywide competition. Awarded Popular Vote Winner, presented by Chadchart Sittipunt. Led end-to-end content production and delivered engaging storytelling to a public audience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="section-label">06 — Contact</div>
+    <h2 class="section-heading">Get in Touch</h2>
+
+    <div class="contact-inner">
+      <!-- <p class="contact-intro">Open to opportunities in Business Analysis, Digital Marketing, and Data Analytics.</p> -->
+
+      <div class="contact-grid">
+        <a class="contact-item" href="mailto:chanisara.jonsomjid@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val">chanisara.jonsomjid@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-item" href="tel:+66940706717">
+          <div class="contact-icon">☎</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val">(+66) 094 070 6717</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/chanisara-jonsomjid-574624311" target="_blank" rel="noopener">
+          <div class="contact-icon">in</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-val">chanisara-jonsomjid</div>
+          </div>
+        </a>
+
+        </a>
+        <a class="contact-item" href="https://drive.google.com/file/d/1ErOKnQr_X1SQ8IBUM2i7ns_BfYY--kY_/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="contact-icon">&#9679;</div>
+          <div>
+            <div class="contact-label">Resume</div>
+            <div class="contact-val">Resume</div>
+          </div>
+        </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Chanisara Jonsomjid</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

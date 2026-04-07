@@ -1,0 +1,743 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg: #fafaf8;
+  --bg2: #f3f2ef;
+  --ink: #1a1a18;
+  --ink-soft: #5a5a54;
+  --ink-muted: #9a9a92;
+  --accent: #b8955a;
+  --accent-light: #e8dcc8;
+  --white: #ffffff;
+  --border: #e2e0d8;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --nav-h: 64px;
+  --max-w: 1100px;
+  --section-pad: 110px 0;
+  --radius: 4px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ===== NAV ===== */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 100;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+#navbar.scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  position: relative;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { width: 100%; }
+.nav-burger {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: var(--nav-h); left: 0; right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 32px;
+  z-index: 99;
+  transform: translateY(-110%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu ul { display: flex; flex-direction: column; gap: 16px; }
+.mobile-menu a {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color var(--transition);
+}
+.mobile-menu a:hover { color: var(--accent); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+.hero-bg-text {
+  position: absolute;
+  bottom: -2vw; right: -1vw;
+  font-family: var(--font-display);
+  font-size: clamp(80px, 14vw, 220px);
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+}
+.hero-inner {
+  max-width: var(--max-w);
+  width: 100%;
+  padding: 60px 48px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.hero-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.hero-photo-frame {
+  width: 280px;
+  height: 340px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  box-shadow: 8px 8px 0 var(--accent-light);
+}
+
+/* [FIX] hero-photo: เพิ่ม z-index:2 เพื่อให้รูปอยู่เหนือ placeholder */
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* [FIX] photo-placeholder: z-index:1 อยู่ล่างรูป ไม่บัง */
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+}
+.photo-placeholder svg { width: 80px; height: 80px; }
+.photo-placeholder.hidden { display: none; }
+
+.hero-text { flex: 1; }
+.hero-hello {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.hero-name em { font-style: italic; font-weight: 300; color: var(--accent); }
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  margin-bottom: 28px;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 13px 36px;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.scroll-hint {
+  position: absolute;
+  bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.scroll-hint span {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50%       { opacity: 1;   transform: scaleY(1);   }
+}
+
+/* ===== SECTIONS COMMON ===== */
+.section { padding: var(--section-pad); position: relative; }
+.section > * {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 60px;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== ABOUT ===== */
+.about-section { background: var(--white); }
+.about-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.about-text p {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+.about-text strong { color: var(--ink); font-weight: 500; }
+
+/* ===== EDUCATION ===== */
+.education-section { background: var(--bg); }
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.edu-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); transform: translateY(-2px); }
+.edu-connector {
+  width: 1px; height: 32px;
+  background: var(--border);
+  margin-left: 80px;
+}
+.edu-logo-wrap { flex-shrink: 0; }
+
+/* [FIX] edu logo: กำหนด width/height/object-fit ให้รูปโลโก้แสดงถูกต้อง */
+.edu-logo-wrap img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.edu-year {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.edu-school {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.edu-detail { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+.edu-badge {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+/* ===== EXPERIENCE ===== */
+.experience-section { background: var(--white); }
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+.exp-meta { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
+.exp-date { font-size: 0.78rem; letter-spacing: 0.07em; color: var(--ink-soft); }
+.exp-type {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-light);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.exp-role { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; margin-bottom: 4px; }
+.exp-company { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 16px; }
+.exp-bullets { display: flex; flex-direction: column; gap: 8px; }
+.exp-bullets li {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.65;
+}
+.exp-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+/* ===================================================================
+   ===== PROJECTS — ใช้ .proj-grid + .proj-card (ของเดิม) =====
+   [FIX] เก็บ .proj-grid และ .proj-card ไว้เพราะ HTML ยังใช้ชื่อนี้อยู่
+   =================================================================== */
+.projects-section { background: var(--bg); }
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* [FIX] .proj-card: รองรับทั้ง div และ a tag (proj-card--linked)
+   เพิ่ม display:flex + flex-direction:column เพื่อให้ layout ถูกต้อง */
+.proj-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--ink);          /* [FIX] reset สี เพราะบางการ์ดเป็น <a> */
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.proj-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+  transform: translateY(-4px);
+}
+
+/* [FIX] proj-card--linked: <a> tag ต้องไม่มี underline และ cursor pointer */
+a.proj-card--linked {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.proj-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.proj-date {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.proj-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+/* [FIX] proj-title--spaced: เพิ่ม margin-top เมื่อมี thumbnail อยู่บน */
+.proj-title--spaced { margin-top: 4px; }
+
+.proj-sub {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.proj-bullets { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.proj-bullets li {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.6;
+}
+.proj-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 3px;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.proj-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.proj-tech span {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  background: var(--bg2);
+  color: var(--ink-soft);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ===== PROJECT THUMBNAIL (สำหรับการ์ดที่มีรูป) ===== */
+/* [FIX] proj-thumbnail: กำหนดขนาดและ overflow:hidden ให้รูปไม่เกินกรอบ */
+/* ===== PROJECTS (FIXED GRID) ===== */
+.projects-section {
+  background: var(--bg);
+}
+
+/* 🔥 แก้ grid ให้ไม่พัง */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 48px;
+  align-items: stretch; /* สำคัญมาก */
+}
+
+/* 🔥 บังคับการ์ดให้เท่ากัน */
+.proj-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 🔥 ตัวแก้หลัก */
+
+  gap: 12px;
+  color: var(--ink);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.proj-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+  transform: translateY(-4px);
+}
+
+/* 🔥 ทำให้ content ยืดเท่ากัน */
+.proj-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1; /* 🔥 ดันให้สูงเท่ากัน */
+}
+
+/* 🔥 fix รูปไม่ให้ดัน layout */
+.proj-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 160px; /* ลดขนาดให้บาลานซ์ */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.proj-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 🔥 hover effect */
+.proj-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+a.proj-card--linked:hover .proj-thumbnail-overlay {
+  opacity: 1;
+}
+
+
+/* ===== ACHIEVEMENTS ===== */
+.achievements-section { background: var(--white); }
+
+/* [FIX] ach-card: ลบ padding ซ้ำซ้อนออก (เดิมมี 2 padding declarations) */
+.ach-card {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+}
+.ach-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  width: 80px;
+}
+.ach-icon { font-size: 2.4rem; }
+.ach-date {
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+.ach-right { flex: 1; }
+.ach-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.ach-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.badge-gold {
+  background: #c4920a; color: #fff;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 5px 14px; border-radius: 100px;
+}
+.badge-pop {
+  background: var(--ink); color: var(--white);
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 5px 14px; border-radius: 100px;
+}
+.ach-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+
+/* ===== CONTACT ===== */
+.contact-section { background: var(--ink); color: var(--white); }
+.contact-section .section-label { color: var(--accent); }
+.contact-section .section-heading { color: var(--white); }
+.contact-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 48px; }
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background var(--transition);
+  cursor: pointer;
+}
+.contact-item:hover { background: rgba(255,255,255,0.08); }
+.contact-icon {
+  width: 44px; height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; color: var(--accent);
+  flex-shrink: 0; font-weight: 600;
+}
+.contact-label {
+  font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.contact-val { font-size: 0.9rem; color: rgba(255,255,255,0.85); word-break: break-word; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  padding: 24px 48px;
+}
+.footer p { font-size: 0.75rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  #navbar { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+
+  .hero-inner { flex-direction: column; gap: 48px; padding: 60px 24px; text-align: center; }
+  .hero-photo-frame { width: 200px; height: 240px; }
+
+  .section > * { padding-left: 24px; padding-right: 24px; }
+
+  .edu-timeline { padding: 0 24px; }
+  .edu-card { padding: 24px; gap: 20px; }
+
+  .exp-list { padding: 0 24px; }
+  .exp-item { grid-template-columns: 1fr; gap: 12px; }
+  .exp-meta { flex-direction: row; align-items: center; gap: 12px; }
+
+  /* [FIX] responsive proj-grid: 1 คอลัมน์บนมือถือ */
+  .proj-grid { grid-template-columns: 1fr; padding: 0 24px; }
+
+  .ach-card { flex-direction: column; gap: 24px; padding: 32px 24px; }
+  .ach-left { flex-direction: row; width: auto; }
+
+  .contact-inner { padding: 0 24px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: 2.8rem; }
+  .section-heading { font-size: 2.2rem; }
+}
+
+.proj-thumbnail-overlay span {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.6);   /* 🔥 เพิ่มพื้นหลัง */
+  border: 1px solid rgba(255,255,255,0.9); /* 🔥 กรอบกลับมา */
+
+  backdrop-filter: blur(4px); /* optional: ทำให้ดู premium */
+}
